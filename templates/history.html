@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Health History</title>
+    <style>
+        /* General page styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9; /* Light background for a clean look */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        /* Table styling */
+        table {
+            width: 90%;
+            max-width: 1200px;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #ffffff; /* White background for the table */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd; /* Light border for separation */
+        }
+
+        th {
+            background-color: #3498db; /* Blue header for a professional look */
+            color: white;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #f4f6f7; /* Light grey for alternating row colors */
+        }
+
+        tr:nth-child(even) td {
+            background-color: #ecf0f1; /* Light grey for even rows */
+        }
+
+        tr:nth-child(odd) td {
+            background-color: #f4f6f7; /* Light grey for odd rows */
+        }
+
+        tr:hover td {
+            background-color: #dfe6e9; /* Highlight on hover for better readability */
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>HEART HEALTH HISTORY</h2>
+    
+    <table>
+        <tr>
+            <th>Age</th>
+            <th>Sex</th>
+            <th>Chest Pain Type (cp)</th>
+            <th>Resting Blood Pressure (trestbps)</th>
+            <th>Serum Cholesterol (chol)</th>
+            <th>Fasting Blood Sugar (fbs)</th>
+            <th>Resting Electrocardiogram (restecg)</th>
+            <th>Maximum Heart Rate (thalach)</th>
+            <th>Exercise Induced Angina (exang)</th>
+            <th>Depression Induced by Exercise (oldpeak)</th>
+            <th>Slope of the Peak Exercise ST Segment (slope)</th>
+            <th>Number of Major Vessels (ca)</th>
+            <th>Thalassemia (thal)</th>
+            <th>Predicted</th>
+        </tr>
+        {% for user in userdetails %}
+        <tr>
+            <td>{{ user[0] }}</td>
+            <td>{{ user[1] }}</td>
+            <td>{{ user[2] }}</td>
+            <td>{{ user[3] }}</td>
+            <td>{{ user[4] }}</td>
+            <td>{{ user[5] }}</td>
+            <td>{{ user[6] }}</td>
+            <td>{{ user[7] }}</td>
+            <td>{{ user[8] }}</td>
+            <td>{{ user[9] }}</td>
+            <td>{{ user[10] }}</td>
+            <td>{{ user[11] }}</td>
+            <td>{{ user[12] }}</td>
+            <td>{{ user[13] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

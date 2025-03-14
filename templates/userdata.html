@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Health Survey Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Global styles */
+    body {
+      background: linear-gradient(to bottom right, #f8f9fa, #dfe6e9);
+      font-family: 'Poppins', sans-serif;
+      padding-top: 50px;
+    }
+
+    /* Centering the form on the screen */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Form container styles */
+    .form-container {
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px;
+    }
+
+    /* Title styling */
+    h2 {
+      color: #2d3436;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    /* Label styling */
+    .form-label {
+      font-weight: 600;
+      color: #2c3e50;
+      font-size: 1rem;
+    }
+
+    /* Input and select box styling */
+    .form-select, .form-control {
+      border-radius: 8px;
+      border: 1px solid #ced4da;
+      padding: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .form-select:focus, .form-control:focus {
+      border-color: #6c5ce7;
+      box-shadow: 0 0 5px rgba(108, 92, 231, 0.5);
+    }
+
+    /* Button styling */
+    .btn-primary {
+      background: linear-gradient(to right, #6c5ce7, #00cec9);
+      border: none;
+      font-weight: bold;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      width: 100%;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(to right, #00cec9, #6c5ce7);
+      transform: scale(1.05);
+    }
+
+    /* Margin bottom for form fields */
+    .mb-4 {
+      margin-bottom: 1.5rem;
+    }
+
+    /* Placeholder color */
+    .form-control::placeholder {
+      color: #7f8c8d;
+    }
+
+    /* Make the form responsive on mobile */
+    @media (max-width: 576px) {
+      .form-container {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h2>Heart Health Survey</h2>
+      <form action="{{ url_for('userdata') }}" method="POST">
+
+        <!-- Age -->
+        <div class="mb-4">
+          <label for="age" class="form-label">Age</label>
+          <input type="number" class="form-control" name="age" id="age" placeholder="Enter your age" required min="1" max="120">
+        </div>
+
+        <!-- Sex -->
+        <div class="mb-4">
+          <label for="sex" class="form-label">Sex</label>
+          <select name="sex" class="form-select" id="sex" required>
+            <option value="">Select Sex</option>
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+          </select>
+        </div>
+
+        <!-- Chest Pain Type (cp) -->
+        <div class="mb-4">
+          <label for="cp" class="form-label">Chest Pain Type</label>
+          <select name="cp" class="form-select" id="cp" required>
+            <option value="">Select Chest Pain Type</option>
+            <option value="1">Typical Angina</option>
+            <option value="2">Atypical Angina</option>
+            <option value="3">Non-Anginal Pain</option>
+            <option value="4">Asymptomatic</option>
+          </select>
+        </div>
+
+        <!-- Resting Blood Pressure -->
+        <div class="mb-4">
+          <label for="trestbps" class="form-label">Resting Blood Pressure</label>
+          <input type="number" class="form-control" name="trestbps" id="trestbps" placeholder="Enter resting blood pressure" required min="50" max="200">
+        </div>
+
+        <!-- Serum Cholesterol -->
+        <div class="mb-4">
+          <label for="chol" class="form-label">Serum Cholesterol</label>
+          <input type="number" class="form-control" name="chol" id="chol" placeholder="Enter serum cholesterol level" required min="100" max="600">
+        </div>
+
+        <!-- Fasting Blood Sugar -->
+        <div class="mb-4">
+          <label for="fbs" class="form-label">Fasting Blood Sugar</label>
+          <select name="fbs" class="form-select" id="fbs" required>
+            <option value="">Select Fasting Blood Sugar</option>
+            <option value="1">> 120 mg/dl</option>
+            <option value="0"><= 120 mg/dl</option>
+          </select>
+        </div>
+
+        <!-- Resting Electrocardiographic Result -->
+        <div class="mb-4">
+          <label for="restecg" class="form-label">Resting Electrocardiographic Result</label>
+          <select name="restecg" class="form-select" id="restecg" required>
+            <option value="">Select Result</option>
+            <option value="0">Normal</option>
+            <option value="1">ST-T wave abnormality</option>
+            <option value="2">Left ventricular hypertrophy</option>
+          </select>
+        </div>
+
+        <!-- Maximum Heart Rate Achieved -->
+        <div class="mb-4">
+          <label for="thalach" class="form-label">Maximum Heart Rate Achieved</label>
+          <input type="number" class="form-control" name="thalach" id="thalach" placeholder="Enter maximum heart rate" required min="50" max="220">
+        </div>
+
+        <!-- Exercise Induced Angina -->
+        <div class="mb-4">
+          <label for="exang" class="form-label">Exercise Induced Angina</label>
+          <select name="exang" class="form-select" id="exang" required>
+            <option value="">Select Exercise Induced Angina</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+
+        <!-- Depression Induced by Exercise -->
+        <div class="mb-4">
+          <label for="oldpeak" class="form-label">Depression Induced by Exercise</label>
+          <input type="number" class="form-control" name="oldpeak" id="oldpeak" placeholder="Enter oldpeak value" required min="0" max="6">
+        </div>
+
+        <!-- Slope of the Peak Exercise ST Segment -->
+        <div class="mb-4">
+          <label for="slope" class="form-label">Slope of the Peak Exercise ST Segment</label>
+          <select name="slope" class="form-select" id="slope" required>
+            <option value="">Select Slope</option>
+            <option value="1">Upsloping</option>
+            <option value="2">Flat</option>
+            <option value="3">Downsloping</option>
+          </select>
+        </div>
+
+        <!-- Number of Major Vessels Colored by Fluoroscopy -->
+        <div class="mb-4">
+          <label for="ca" class="form-label">Number of Major Vessels</label>
+          <select name="ca" class="form-select" id="ca" required>
+            <option value="">Select Number of Vessels</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+
+        <!-- Thalassemia -->
+        <div class="mb-4">
+          <label for="thal" class="form-label">Thalassemia</label>
+          <select name="thal" class="form-select" id="thal" required>
+            <option value="">Select Thalassemia Type</option>
+            <option value="3">Normal</option>
+            <option value="6">Fixed Defect</option>
+            <option value="7">Reversable Defect</option>
+          </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
